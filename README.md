@@ -27,7 +27,7 @@ It includes features such as:
 ---
 
 ## 🚀 Built With
-- **Laravel 11**
+- **Laravel 12**
 - **MySQL**
 - **Blade / Bootstrap**
 - **JavaScript, jQuery, and CSS**
