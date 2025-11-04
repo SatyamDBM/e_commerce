@@ -30,7 +30,7 @@ It includes features such as:
 - **Laravel 12**
 - **MySQL**
 - **Blade / Bootstrap**
-- **JavaScript, jQuery, and CSS**
+- **JavaScript, jQuery, AJAX and CSS**
 
 ---
 
