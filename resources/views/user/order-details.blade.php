@@ -6,19 +6,32 @@
     <!-- ===== Order Summary Card ===== -->
     <div class="card bg-dark text-light mb-4 shadow">
         <div class="card-body">
-            <h5>Order Number: <span class="text-success">{{ $order->order_number }}</span></h5>
+            <h5>
+                Order Number: 
+                <span class="text-success">{{ $order->order_number }}</span>
+            </h5>
             <p>Date: {{ $order->created_at->format('d M Y, h:i A') }}</p>
-            <p>Status: 
+            <p>
+                Status: 
                 <span class="badge 
                     @if($order->status === 'pending') bg-warning 
                     @elseif($order->status === 'completed') bg-success 
                     @elseif($order->status === 'cancelled') bg-danger 
-                    @else bg-secondary @endif">
+                    @else bg-secondary 
+                    @endif">
                     {{ ucfirst($order->status) }}
                 </span>
             </p>
-            <p>Payment Method: <strong>{{ strtoupper($order->payment_method) }}</strong></p>
-            <p>Total Amount: <strong class="text-success">₹{{ number_format($order->total_amount, 2) }}</strong></p>
+            <p>
+                Payment Method: 
+                <strong>{{ strtoupper($order->payment_method) }}</strong>
+            </p>
+            <p>
+                Total Amount: 
+                <strong class="text-success">
+                    ₹{{ number_format($order->total_amount, 2) }}
+                </strong>
+            </p>
         </div>
     </div>
 
@@ -34,8 +47,8 @@
                     <th>Subtotal</th>
                 </tr>
             </thead>
+
             <tbody>
-                
                 @php $grandTotal = 0; @endphp
 
                 @forelse($order->orderItems as $item)
@@ -45,9 +58,11 @@
                     @endphp
                     <tr>
                         <td style="width: 100px;">
-                            <img src="{{ asset('uploads/' . ($item->product->product_image ?? 'default.png')) }}" 
-                                 class="img-fluid rounded" 
-                                 alt="{{ $item->product->name ?? 'Product' }}">
+                            <img 
+                                src="{{ asset('uploads/' . ($item->product->product_image ?? 'default.png')) }}" 
+                                class="img-fluid rounded" 
+                                alt="{{ $item->product->name ?? 'Product' }}"
+                            >
                         </td>
                         <td>{{ $item->product->name ?? 'Unknown Product' }}</td>
                         <td>₹{{ number_format($item->price, 2) }}</td>
@@ -74,14 +89,13 @@
 
     <!-- ===== Action Buttons ===== -->
     <div class="mt-4 d-flex flex-column flex-md-row justify-content-end gap-2">
-    <a href="{{ route('user.orders') }}" class="btn btn-outline-light w-100 w-md-auto">
-        ← Back to Orders
-    </a>
-    <a href="/" class="btn btn-success w-100 w-md-auto">
-        Continue Shopping
-    </a>
-</div>
-
+        <a href="{{ route('user.orders') }}" class="btn btn-outline-light w-100 w-md-auto">
+            ← Back to Orders
+        </a>
+        <a href="/" class="btn btn-success w-100 w-md-auto">
+            Continue Shopping
+        </a>
+    </div>
 </div>
 
 @include('footer')
