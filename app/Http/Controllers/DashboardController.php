@@ -101,9 +101,9 @@ class DashboardController extends Controller
 
         return redirect()->route('admin.dashboard')->with('success', 'User updated.');
     }
-
-public function userProfile_Upload(Request $request)
-{
+     
+    public function userProfile_Upload(Request $request)
+    {
     $user = auth()->user();
     if (!$user) {
         return back()->with('error', 'User not authenticated!');
@@ -119,8 +119,7 @@ public function userProfile_Upload(Request $request)
     } else {
         return back()->with('error', 'No file selected!');
     }
-}
-
+    }
 
 
 }
