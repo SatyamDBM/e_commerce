@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Order;
 use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
@@ -38,22 +39,34 @@ class DashboardController extends Controller
         if ($user->usertype !== 'admin') {
             abort(403, 'Unauthorized Access');
         }
-        $users = User::orderBy('id', 'asc')->get();
         $usersCount = User::count();
         $productsCount = Product::count();
-        // $ordersCount = Order::count();
-
-        // $revenue = Order::sum('total_price');
-        // $pendingOrders = Order::where('status', 'pending')->count();
+        $ordersCount = Order::count();
 
         return view('admin.dashboard', compact(
-            'users',
             'usersCount',
             'productsCount',
+            'ordersCount',
        
         ));
     }
+        public function user_Details()
+    {
+        $users = User::orderBy('id', 'asc')->get();
+        return view('admin.users', compact('users'));
+    }
 
+    public function product_Details()
+    {
+        $products = Product::orderBy('id', 'asc')->get();
+        return view('admin.products', compact('products'));
+    }
+
+    public function order_Details()
+    {
+        $orders = Order::with('user')->orderBy('id', 'desc')->get();
+        return view('admin.orders', compact('orders'));
+    }
     // Admin: delete user
     public function deleteUser($id)
     {

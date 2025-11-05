@@ -7,8 +7,9 @@ use Illuminate\Support\Facades\Auth;
 
 class WishlistController extends Controller
 {
-public function addToWishlist($id)
-{
+
+ public function addToWishlist($id)
+ {
     if (!Auth::check()) {
         return response()->json(['error' => 'not_logged_in']);
     }
@@ -34,11 +35,11 @@ public function addToWishlist($id)
 
         return response()->json(['status' => 'added']);
     }
-}
+ }
 
 
 
-    public function myWishlist()
+ public function myWishlist()
     {
         $wishlist = Wishlist::with('product')->where('user_id', Auth::id())->get();
         return view('user.wishlist', compact('wishlist'));

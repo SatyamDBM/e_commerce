@@ -1,6 +1,6 @@
 
   @include('header')
-  <div class="login-card mx-auto">
+  <div class="login-card mx-auto" style="margin-bottom: 60px;">
     <h3><i class="bi bi-person-circle"></i> Sign In</h3>
     <form action="{{ route('login.submit') }}" method="POST">
       @csrf

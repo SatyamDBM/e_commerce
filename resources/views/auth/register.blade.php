@@ -1,6 +1,6 @@
 @include('header')
 
-<div class="register-card mx-auto mt-5">
+<div class="register-card mx-auto mt-5" style="margin-bottom: 60px;">
   <h3><i class="bi bi-person-plus-fill"></i> Create Account</h3>
 
   <form action="{{ route('register.store') }}" method="POST" autocomplete="off">

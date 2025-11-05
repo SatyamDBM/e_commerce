@@ -59,6 +59,9 @@ Route::middleware('auth')->group(function () {
 */
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
   Route::get('/dashboard', [DashboardController::class, 'adminDashboard'])->name('admin.dashboard');
+  route::get('/dashboard/user_details',[DashboardController::class,'user_Details'])->name('user_details');
+  route::get('/dashboard/product_details',[DashboardController::class,'product_Details'])->name('product_details');
+  route::get('/dashboard/order_details',[DashboardController::class,'order_Details'])->name('order_details');
 
     // ✅ User Management
     Route::get('/user/{id}/edit', [DashboardController::class, 'editUserForm'])->name('admin.user.edit');

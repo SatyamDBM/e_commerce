@@ -1,32 +1,37 @@
 <!doctype html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="utf-8">
-    <title>@yield('title', 'Admin Panel')</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- meta, css links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
   </head>
-
-  <body class="bg-dark text-light">
-
-    <div class="d-flex">
-      
-      {{-- Sidebar --}}
-      @include('components.admin_sidebar')
-
-      {{-- Main Content --}}
-      <div class="flex-grow-1">
-        @include('components.admin_header')
-
-        <main class="p-4" style="min-height: 90vh;">
-          @yield('content')
-        </main>
-
-        @include('components.admin_footer')
-      </div>
+  <body>
+    <div class="admin-sidebar">
+      @include('components.admin_sidebar')  {{-- your nav links --}}
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="sidebar-overlay"></div>
+
+    <div class="admin-content">
+      <header class="admin-header">
+        <div class="left">
+          <button class="menu-toggle" aria-label="Open menu">☰</button>
+          <h5>Admin Panel</h5>
+        </div>
+        <div class="header-actions">
+          {{-- search / profile / logout --}}
+        </div>
+      </header>
+
+      <main class="admin-main">
+        @yield('content')
+      </main>
+
+      <footer class="admin-footer">
+        © {{ date('Y') }} • Admin
+      </footer>
+    </div>
+
     <script src="{{ asset('js/admin.js') }}"></script>
   </body>
 </html>
